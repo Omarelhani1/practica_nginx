@@ -1,0 +1,37 @@
+- name: Instalar nginx
+  apt: name=nginx state=latest
+  become: yes
+
+- name: copiar virtualhost
+  template:
+    src: vhost
+    dest: /etc/nginx/sites-availables/vhost
+    owner: root
+    group: root
+    mode 0644
+  notify: restart nginx
+
+- name: DocumentRoot
+  ansible.builtin.file:
+    path: /srv/vh/
+    state: directory
+    owner: www-data
+    group: www-data
+    mode '0755'
+
+- name: Index.html
+  copy:
+    src: index.html
+    dest: /srv/vh/index.html
+    owner: www-data
+    group: www-data
+    mode: 0644
+
+- name: Activar virtualhost
+  file:
+    src: /etc/nginx/sites-available/vhost
+    dest: /etc/nginx/sites-enabled/vhost
+    state: link
+    mode: 0755
+  notify: restart nginx
+
