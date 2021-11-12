@@ -5,10 +5,10 @@
 - name: copiar virtualhost
   template:
     src: vhost
-    dest: /etc/nginx/sites-availables/vhost
+    dest: /etc/nginx/sites-available/vhost
     owner: root
     group: root
-    mode 0644
+    mode: 0644
   notify: restart nginx
 
 - name: DocumentRoot
@@ -17,7 +17,7 @@
     state: directory
     owner: www-data
     group: www-data
-    mode '0755'
+    mode: '0755'
 
 - name: Index.html
   copy:
