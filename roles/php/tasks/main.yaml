@@ -1,0 +1,12 @@
+- name: Instalar php
+  apt: name=php7.4-fpm
+
+- name: copiar fichero php
+  template:
+    src: info.php
+    dest: /srv/vh/info.php
+    owner: www-data
+    group: www-data
+    mode: 0644
+
+
