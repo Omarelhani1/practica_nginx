@@ -1,5 +1,5 @@
 - name: Instalación de mariadb
-  apt: name=maridb-server state=latest
+  apt: name=mariadb-server state=latest
   become: yes
 
 - name: Inslatación de pip
