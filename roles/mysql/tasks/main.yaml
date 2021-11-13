@@ -1,0 +1,10 @@
+- name: Instalación de mariadb
+  apt: name=maridb-server state=latest
+  become: yes
+
+- name: Inslatación de pip
+  apt: name=python3-pip state=latest
+  become: yes
+
+- name: Instalación módulo mymysql
+  pip: name=pymysql  
